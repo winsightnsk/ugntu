@@ -1,6 +1,8 @@
 // import 'package:berkana/datamanage.dart';
 import 'package:flutter/material.dart';
 
+import 'datamanage.dart';
+
 class ShowList extends StatefulWidget {
   static String rote = 'ShowList';
   const ShowList({Key? key}) : super(key: key);
@@ -46,7 +48,10 @@ class _ShowListState extends State<ShowList> {
               },
             icon: const Icon(Icons.ac_unit)
           ),
-          //TextButton(onPressed: () {Navigator.pushNamed(context, DataManage.rote);}, child: Text('Память',style: Theme.of(context).textTheme.bodyText1,)),
+          TextButton(
+            onPressed: () {Navigator.pushNamed(context, DataManage.rote);},
+            child: Text('Память',style: Theme.of(context).textTheme.bodyText1,)
+          ),
           const SizedBox(width: 50,),
         ],
       ),

@@ -26,7 +26,7 @@ class RegPage extends StatelessWidget {
                   Expanded(child: Container()),
                   const Icon(
                     Icons.app_registration,
-                    color: Color(0xFF0079D0),
+                    color: Colors.black12,
                     size: 30.0,
                   ),
                   Text('Регистрация', style: Theme.of(context).textTheme.headline1),

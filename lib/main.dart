@@ -4,7 +4,7 @@ import 'regpage.dart';
 import 'class_theme.dart';
 import 'forgetpage.dart';
 import 'showlist.dart';
-// import 'datamanage.dart';
+import 'datamanage.dart';
 
 const borderStyle = OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(36)),
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         RegPage.rote    : (context) => const RegPage(),
         ForgetPage.rote : (context) => const ForgetPage(),
         ShowList.rote   : (context) => const ShowList(),
-        // DataManage.rote : (context) => const DataManage(),
+        DataManage.rote : (context) => const DataManage(),
       }
     );
   }

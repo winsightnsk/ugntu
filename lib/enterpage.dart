@@ -98,12 +98,12 @@ class EnterPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 30,),
                 InkWell(
-                  child: Text('Регистрация', style: Theme.of(context).textTheme.headline1),
+                  child: Text('Регистрация', style: Theme.of(context).textTheme.headline2),
                   onTap:  () => Navigator.pushNamed(context, RegPage.rote),
                 ),
                 const SizedBox(height: 20,),
                 InkWell(
-                  child: Text('Забыли пароль', style: Theme.of(context).textTheme.headline1),
+                  child: Text('Забыли пароль', style: Theme.of(context).textTheme.headline2),
                   onTap: () => Navigator.pushNamed(context, ForgetPage.rote),
                 ),
               ],

@@ -21,6 +21,12 @@ ThemeData globalTheme() => ThemeData(
         color: Colors.brown,
         fontFamily: 'gabriola',
       ),
+    headline2: TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.bold,
+      color: Colors.red,
+      fontFamily: 'gabriola',
+    ),
     bodyText1: TextStyle(
         fontSize: 26,
         color: Color.fromRGBO(0, 0, 0, 0.6),
