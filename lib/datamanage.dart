@@ -43,10 +43,10 @@ class _DataManageState extends State<DataManage> {
   final List<int> _counter = [0,0];
   late TextEditingController _controller;
   late TextEditingController _controller1;
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-    return directory.path;
-  }
+  // Future<String> get _localPath async {
+  //   final directory = await getApplicationDocumentsDirectory();
+  //   return directory.path;
+  // }
 
   @override
   void initState(){
