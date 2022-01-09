@@ -1,4 +1,5 @@
 // import 'package:berkana/datamanage.dart';
+import 'package:berkana/netpage.dart';
 import 'package:flutter/material.dart';
 
 import 'datamanage.dart';
@@ -33,6 +34,10 @@ class _ShowListState extends State<ShowList> {
       appBar: AppBar(
         title: const Text('Ощепков В.М.',),
         actions: <Widget>[
+          TextButton(
+              onPressed: () {Navigator.pushNamed(context, DataManage.rote);},
+              child: Text('Data',style: Theme.of(context).textTheme.bodyText1,)
+          ),
           IconButton(
             onPressed:
               () {
@@ -50,10 +55,10 @@ class _ShowListState extends State<ShowList> {
             icon: const Icon(Icons.ac_unit)
           ),
           TextButton(
-            onPressed: () {Navigator.pushNamed(context, DataManage.rote);},
-            child: Text('Память',style: Theme.of(context).textTheme.bodyText1,)
+              onPressed: () {Navigator.pushNamed(context, NetPage.rote);},
+              child: Text('Net',style: Theme.of(context).textTheme.bodyText1,)
           ),
-          const SizedBox(width: 50,),
+          const SizedBox(width: 10,),
         ],
       ),
       drawer: Drawer(

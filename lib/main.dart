@@ -1,3 +1,4 @@
+import 'package:berkana/netpage.dart';
 import 'package:flutter/material.dart';
 import 'enterpage.dart';
 import 'regpage.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         ForgetPage.rote : (context) => const ForgetPage(),
         ShowList.rote   : (context) => const ShowList(),
         DataManage.rote : (context) => DataManage(storage: CounterStorage()),
+        NetPage.rote    : (context) => const NetPage(),
       }
     );
   }
