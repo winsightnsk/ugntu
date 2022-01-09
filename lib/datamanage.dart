@@ -1,21 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
+import 'dart:io';
 
 
 
 class DataManage extends StatefulWidget {
   static String rote = 'DataManage';
-  const DataManage({Key? key}) : super(key: key);
+  final CounterStorage storage;
+  const DataManage({Key? key, required this.storage}) : super(key: key);
 
   @override
   State<DataManage> createState() => _DataManageState();
+}
+
+class CounterStorage {
+  Future<String> get _localPath async {
+    final directory =await getApplicationDocumentsDirectory();
+    return directory.path;
+  }
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/counter.txt');
+  }
+  Future<int> readCounter() async {
+    try {
+      final file = await _localFile;
+      final contents = await file.readAsString();
+
+      return int.parse(contents);
+    } catch (e) {
+      return 0;
+    }
+  }
+  Future<File> writeCounter(int counter) async {
+    final file = await _localFile;
+    return file.writeAsString('$counter');
+  }
 }
 
 class _DataManageState extends State<DataManage> {
   List<int> _counter = [0,0];
   late TextEditingController _controller;
   late TextEditingController _controller1;
+  String _lP='';
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+    return directory.path;
+  }
 
   @override
   void initState(){
@@ -54,12 +87,6 @@ class _DataManageState extends State<DataManage> {
           break;
       }
     });
-  }
-
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-
-    return directory.path;
   }
 
   @override

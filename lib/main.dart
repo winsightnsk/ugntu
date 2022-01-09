@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         RegPage.rote    : (context) => const RegPage(),
         ForgetPage.rote : (context) => const ForgetPage(),
         ShowList.rote   : (context) => const ShowList(),
-        DataManage.rote : (context) => const DataManage(),
+        DataManage.rote : (context) => DataManage(storage: CounterStorage()),
       }
     );
   }
