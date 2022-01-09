@@ -1,8 +1,10 @@
 //import 'package:flutter/cupertino.dart';
+import 'package:berkana/widget_totalbar.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'widget_totalbar.dart';
 
 class NetPage extends StatefulWidget {
   static String rote = 'netpage';
@@ -24,9 +26,8 @@ class _NetPageState extends State<NetPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ощепков В.М.'),
-      ),
+      appBar: totalBar(context),
+      drawer: totalDrawer(context),
       body: Center(
         child: FutureBuilder<Post>(
           future: futureAlbum,

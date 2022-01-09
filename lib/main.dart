@@ -35,3 +35,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+void toEnterPage(BuildContext context) => Navigator.pushNamed(context, EnterPage.rote);
