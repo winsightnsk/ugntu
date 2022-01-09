@@ -18,8 +18,9 @@ class _ShowListState extends State<ShowList> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
-    _controller.text='https://avatars.mds.yandex.net/i?id=99dee32faf5dbecaf3195da47511518d-4011431-images-thumbs&n=13&exp=1' ;
+    _controller = TextEditingController(
+        text: 'https://avatars.mds.yandex.net/i?id=99dee32f'
+              'af5dbecaf3195da47511518d-4011431-images-thumbs&n=13&exp=1');
   }
   @override
   void dispose() {
