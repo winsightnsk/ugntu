@@ -57,7 +57,7 @@ class _DataManageState extends State<DataManage> {
     _loadCounter(1);
   }
 
-  void _loadCounter(int i) async {
+  /*void _loadCounter(int i) async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       switch (i) {
@@ -66,11 +66,42 @@ class _DataManageState extends State<DataManage> {
           _controller.text= _counter[0].toString();
         break;
         case 1:
+          widget.storage.readCounter().then((int value) => _counter[1] = value);
+          _controller1.text= _counter[1].toString();
+        break;
+      }
+  });
+  void _incrementCounter(int i) async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      switch (i) {
+        case 0:
+          _counter[0] = (prefs.getInt('counter') ?? 0) +1;
+          prefs.setInt('counter', _counter[0]);
+          _controller.text= _counter[0].toString();
+          break;
+        case 1:
+          widget.storage.readCounter().then((int value) => _counter[1] = value+1);
+          widget.storage.writeCounter(_counter[1]);
+          _controller1.text= _counter[1].toString();
+          break;
+      }
+    });
+  }*/
+  void _loadCounter(int i) async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      switch (i) {
+        case 0:
+          _counter[0] = prefs.getInt('counter') ?? 0;
+          _controller.text= _counter[0].toString();
+          break;
+        case 1:
           widget.storage.readCounter().then((int value) {
-            setState(() {_counter[1] = value;});
+            _counter[1] = value;
             _controller1.text= _counter[1].toString();
           });
-        break;
+          break;
       }
     });
   }
@@ -85,10 +116,10 @@ class _DataManageState extends State<DataManage> {
           break;
         case 1:
           widget.storage.readCounter().then((int value) {
-            setState(() {_counter[1] = value+1;});
+            _counter[1] = value+1;
+            widget.storage.writeCounter(_counter[1]);
+            _controller1.text= _counter[1].toString();
           });
-          widget.storage.writeCounter(_counter[1]);
-          _controller1.text= _counter[1].toString();
           break;
       }
     });
