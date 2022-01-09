@@ -1,3 +1,4 @@
+import 'package:berkana/widget_totalbar.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPage extends StatelessWidget {
@@ -7,6 +8,8 @@ class ForgetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: totalBar(context),
+        drawer: totalDrawer(context),
         body: Container(
           color: Colors.white,
           child: SizedBox(

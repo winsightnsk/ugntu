@@ -6,6 +6,7 @@ import 'class_theme.dart';
 import 'forgetpage.dart';
 import 'showlist.dart';
 import 'datamanage.dart';
+import 'netpage.dart';
 
 const borderStyle = OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(36)),
@@ -37,3 +38,8 @@ class MyApp extends StatelessWidget {
 }
 
 void toEnterPage(BuildContext context) => Navigator.pushNamed(context, EnterPage.rote);
+void toRegPage(BuildContext context) => Navigator.pushNamed(context, RegPage.rote);
+void toForgetPage(BuildContext context) => Navigator.pushNamed(context, ForgetPage.rote);
+void toShowList(BuildContext context) => Navigator.pushNamed(context, ShowList.rote);
+void toDataManage(BuildContext context) => Navigator.pushNamed(context, DataManage.rote);
+void toNetPage(BuildContext context) => Navigator.pushNamed(context, NetPage.rote);

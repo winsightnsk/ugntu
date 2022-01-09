@@ -2,6 +2,7 @@
 import 'package:berkana/forgetpage.dart';
 import 'package:berkana/regpage.dart';
 import 'package:berkana/showlist.dart';
+import 'package:berkana/widget_totalbar.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 //Ощепков В.М.
@@ -11,6 +12,8 @@ class EnterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: totalBar(context),
+        drawer: totalDrawer(context),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -23,7 +26,7 @@ class EnterPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 100,),
+                const SizedBox(height: 20,),
                 SizedBox(
                   width: 110,
                   height: 84,
@@ -87,7 +90,7 @@ class EnterPage extends StatelessWidget {
                   child:
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFF0079D0),
+                        primary: const Color(0xFF7998AC),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(36)
                         )

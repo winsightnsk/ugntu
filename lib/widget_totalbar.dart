@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'enterpage.dart';
-import 'regpage.dart';
-import 'class_theme.dart';
-import 'forgetpage.dart';
-import 'showlist.dart';
-import 'datamanage.dart';
 import 'main.dart';
 
 PreferredSizeWidget? totalBar(BuildContext context) {
@@ -35,13 +29,15 @@ PreferredSizeWidget? totalBar(BuildContext context) {
 }
 
 Widget? totalDrawer(BuildContext context) {
+  double cirk=8.0;
   return SizedBox(width: 300,
     child:
     ListView(
       padding: EdgeInsets.zero,
       children: [
         DrawerHeader(
-           decoration: const BoxDecoration(
+           decoration: BoxDecoration(
+             borderRadius: BorderRadius.all(Radius.circular(cirk)),
             color: Colors.white,
           ),
           child: Image.asset('assets/fluter.jpg'),
@@ -49,26 +45,48 @@ Widget? totalDrawer(BuildContext context) {
         Container(
           margin: const EdgeInsets.all(20),
           child: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10))
+              borderRadius: BorderRadius.all(Radius.circular(cirk))
             ),
-            child: ListTile(
-              leading: const Icon(Icons.login),
-              title: const Text('Авторизация'),
-              onTap: () => toEnterPage(context),
-            ),
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.login),
+                  title: const Text('Авторизация'),
+                  onTap: () => toEnterPage(context),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.login),
+                  title: const Text('Регистрация'),
+                  onTap: () => toRegPage(context),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.login),
+                  title: const Text('Список'),
+                  onTap: () => toShowList(context),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.login),
+                  title: const Text('Данные'),
+                  onTap: () => toDataManage(context),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.login),
+                  title: const Text('Сеть'),
+                  onTap: () => toNetPage(context),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.login),
+                  title: const Text('Забыл пароль'),
+                  onTap: () => toForgetPage(context),
+                ),
+              ],
+            )
+
           ),
         ),
       ],
     ),
   );
 }
-/*
-
-RegPage.rote    : (context) => const RegPage(),
-ForgetPage.rote : (context) => const ForgetPage(),
-ShowList.rote   : (context) => const ShowList(),
-DataManage.rote : (context) => DataManage(storage: CounterStorage()),
-NetPage.rote    : (context) => const NetPage(),
-*/

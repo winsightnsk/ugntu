@@ -1,3 +1,4 @@
+import 'package:berkana/widget_totalbar.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,10 +44,6 @@ class _DataManageState extends State<DataManage> {
   final List<int> _counter = [0,0];
   late TextEditingController _controller;
   late TextEditingController _controller1;
-  // Future<String> get _localPath async {
-  //   final directory = await getApplicationDocumentsDirectory();
-  //   return directory.path;
-  // }
 
   @override
   void initState(){
@@ -56,38 +53,7 @@ class _DataManageState extends State<DataManage> {
     _loadCounter(0);
     _loadCounter(1);
   }
-
-  /*void _loadCounter(int i) async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      switch (i) {
-        case 0:
-          _counter[0] = prefs.getInt('counter') ?? 0;
-          _controller.text= _counter[0].toString();
-        break;
-        case 1:
-          widget.storage.readCounter().then((int value) => _counter[1] = value);
-          _controller1.text= _counter[1].toString();
-        break;
-      }
-  });
-  void _incrementCounter(int i) async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      switch (i) {
-        case 0:
-          _counter[0] = (prefs.getInt('counter') ?? 0) +1;
-          prefs.setInt('counter', _counter[0]);
-          _controller.text= _counter[0].toString();
-          break;
-        case 1:
-          widget.storage.readCounter().then((int value) => _counter[1] = value+1);
-          widget.storage.writeCounter(_counter[1]);
-          _controller1.text= _counter[1].toString();
-          break;
-      }
-    });
-  }*/
+  
   void _loadCounter(int i) async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -135,17 +101,8 @@ class _DataManageState extends State<DataManage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Ощепков В.М.',),
-          actions: [
-            IconButton(
-              onPressed: () => _incrementCounter(0),
-              tooltip: 'Increment',
-              icon: const Icon(Icons.add, size: 40, color: Colors.brown,),
-            ),
-            const SizedBox(width: 50,)
-          ],
-        ),
+        appBar: totalBar(context),
+        drawer: totalDrawer(context),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(

@@ -1,3 +1,4 @@
+import 'package:berkana/widget_totalbar.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 
@@ -8,6 +9,8 @@ class RegPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: totalBar(context),
+      drawer: totalDrawer(context),
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
@@ -20,7 +23,7 @@ class RegPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 80,),
+              const SizedBox(height: 10,),
               Row(
                 children: [
                   Expanded(child: Container()),
