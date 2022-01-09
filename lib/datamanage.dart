@@ -28,7 +28,6 @@ class CounterStorage {
     try {
       final file = await _localFile;
       final contents = await file.readAsString();
-
       return int.parse(contents);
     } catch (e) {
       return 0;
@@ -41,10 +40,9 @@ class CounterStorage {
 }
 
 class _DataManageState extends State<DataManage> {
-  List<int> _counter = [0,0];
+  final List<int> _counter = [0,0];
   late TextEditingController _controller;
   late TextEditingController _controller1;
-  String _lP='';
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
     return directory.path;
@@ -68,7 +66,10 @@ class _DataManageState extends State<DataManage> {
           _controller.text= _counter[0].toString();
         break;
         case 1:
-
+          widget.storage.readCounter().then((int value) {
+            setState(() {_counter[1] = value;});
+            _controller1.text= _counter[1].toString();
+          });
         break;
       }
     });
@@ -83,7 +84,11 @@ class _DataManageState extends State<DataManage> {
           _controller.text= _counter[0].toString();
           break;
         case 1:
-        //TODO file me
+          widget.storage.readCounter().then((int value) {
+            setState(() {_counter[1] = value+1;});
+          });
+          widget.storage.writeCounter(_counter[1]);
+          _controller1.text= _counter[1].toString();
           break;
       }
     });
@@ -153,8 +158,8 @@ class _DataManageState extends State<DataManage> {
                 ),
                 const SizedBox(height: 50,),
                 ElevatedButton(
-                  onPressed: (){},
-                  child: Text('but1',style: Theme.of(context).textTheme.bodyText1,),
+                  onPressed: (){_incrementCounter(1);},
+                  child: Text('+1',style: Theme.of(context).textTheme.bodyText1,),
                 ),
                 TextField(
                   controller: _controller1,
@@ -165,7 +170,7 @@ class _DataManageState extends State<DataManage> {
                     fillColor: Color(0xFFeceff1),
                     enabledBorder: borderStyle,
                     focusedBorder: borderStyle,
-                    labelText: 'tf2',
+                    labelText: 'File',
                   ),
                 ),
               ],
