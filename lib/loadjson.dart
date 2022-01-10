@@ -137,12 +137,45 @@ Future<List<User>> _fetchUsersList() async {
 
 
 Future showDetales(BuildContext context, User data) {
+  TextStyle? ts=Theme.of(context).textTheme.bodyText1;
+  String chs({int? i, String? s}){
+    String res='';
+    if (i!=null){
+      res=i.toString();
+    }
+    if (s!=null){
+      res=s;
+    }
+    return (res=='')? '---' : res;
+  }
   return showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('1', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.right,),
-        content: Text('2', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center,),
+        title: Text(chs(s: data.name), style: Theme.of(context).textTheme.headline2, textAlign: TextAlign.right,),
+        content:
+          SingleChildScrollView(
+            child: Column(
+            children: [
+              Text('id: '+chs(i: data.id), style: ts, textAlign: TextAlign.left,),
+              Text('username: '+chs(s: data.username), style: ts, textAlign: TextAlign.left,),
+              Text('e-mail: '+chs(s: data.email), style: ts, textAlign: TextAlign.left,),
+              Text('phone: '+chs(s: data.phone), style: ts, textAlign: TextAlign.left,),
+              Text('website: '+chs(s: data.website), style: ts, textAlign: TextAlign.left,),
+              Text('address', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
+              Text('city: '+chs(s: data.address?.city), style: ts, textAlign: TextAlign.left,),
+              Text('suite: '+chs(s: data.address?.suite), style: ts, textAlign: TextAlign.left,),
+              Text('zipcode: '+chs(s: data.address?.zipcode), style: ts, textAlign: TextAlign.left,),
+              Text('geo', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
+              Text('lat: '+chs(s: data.address?.geo?.lat), style: ts, textAlign: TextAlign.left,),
+              Text('lng: '+chs(s: data.address?.geo?.lng), style: ts, textAlign: TextAlign.left,),
+              Text('company', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
+              Text('name: '+chs(s: data.company?.name), style: ts, textAlign: TextAlign.left,),
+              Text('catchPhrase: '+chs(s: data.company?.catchPhrase), style: ts, textAlign: TextAlign.left,),
+              Text('bs: '+chs(s: data.company?.bs), style: ts, textAlign: TextAlign.left,),
+            ],
+          ),
+          ),
         actions: <Widget>[
           InkWell(
             child: Text('Увидел', style: Theme.of(context).textTheme.headline1),
