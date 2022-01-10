@@ -71,14 +71,14 @@ ListView _usersListView(BuildContext context, data) {
   return ListView.builder(
       itemCount: data.length,
       itemBuilder: (context, index) {
-        return _userListTile(context, data[index].name, data[index].email, Icons.account_circle);
+        return _userListTile(context, data[index], Icons.account_circle);
       });
 }
 
-ListTile _userListTile(BuildContext context, String title, String subtitle, IconData icon) {
+ListTile _userListTile(BuildContext context, User data, IconData icon) {
   return ListTile(
     title: Text(
-      title,
+      data.name ?? '---',
       style: Theme.of(context).textTheme.bodyText2?.copyWith(
           fontSize: 33,
           color: Colors.brown,
@@ -92,7 +92,7 @@ ListTile _userListTile(BuildContext context, String title, String subtitle, Icon
       ),
     ),
     subtitle: Text(
-        subtitle,
+        data.email ?? 'Нет записи',
         style: Theme.of(context).textTheme.bodyText1?.copyWith(
           color: Colors.teal,
           shadows: <Shadow>[
@@ -121,7 +121,7 @@ ListTile _userListTile(BuildContext context, String title, String subtitle, Icon
           color: Colors.teal[500],
         ),
     ),
-    onTap: ()=>showDetales(context),
+    onTap: ()=>showDetales(context, data),
   );
 }
 
@@ -136,7 +136,7 @@ Future<List<User>> _fetchUsersList() async {
 }
 
 
-Future showDetales(BuildContext context) {
+Future showDetales(BuildContext context, User data) {
   return showDialog(
     context: context,
     builder: (BuildContext context) {
