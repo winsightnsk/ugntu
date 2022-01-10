@@ -63,23 +63,18 @@ Widget? totalDrawer(BuildContext context) {
                 ),
                 ListTile(
                   leading: const Icon(Icons.login),
-                  title: const Text('Список'),
+                  title: const Text('Список (кейс)'),
                   onTap: () => toShowList(context),
                 ),
                 ListTile(
                   leading: const Icon(Icons.login),
-                  title: const Text('Данные'),
+                  title: const Text('Данные (кейс)'),
                   onTap: () => toDataManage(context),
                 ),
                 ListTile(
                   leading: const Icon(Icons.login),
-                  title: const Text('Сеть'),
+                  title: const Text('Сеть (кейс)'),
                   onTap: () => toNetPage(context),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.login),
-                  title: const Text('Забыл пароль'),
-                  onTap: () => toForgetPage(context),
                 ),
               ],
             )
