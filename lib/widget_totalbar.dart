@@ -63,6 +63,11 @@ Widget? totalDrawer(BuildContext context) {
                 ),
                 ListTile(
                   leading: const Icon(Icons.login),
+                  title: const Text('Загрузка'),
+                  onTap: () => toLoadJSON(context),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.login),
                   title: const Text('Список (кейс)'),
                   onTap: () => toShowList(context),
                 ),

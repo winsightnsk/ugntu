@@ -68,7 +68,7 @@ class _RegPageState extends State<RegPage> {
                 ],
               ),
               const Divider(color: Colors.black),
-              Text('Чтобы зарегистрироваться введите свой номер телефона и пароль',
+              Text('Введите свой номер телефона (10 цифр)\nи пароль',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyText1
               ),
@@ -127,7 +127,7 @@ class _RegPageState extends State<RegPage> {
                   child:
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: const Color(0xFF0079D0),
+                          primary: const Color(0xFF7998AC),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(36)
                           )

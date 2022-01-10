@@ -1,12 +1,12 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:berkana/forgetpage.dart';
 import 'package:berkana/regpage.dart';
-import 'package:berkana/showlist.dart';
 import 'package:berkana/widget_totalbar.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'loadjson.dart';
 import 'main.dart';
-//Ощепков В.М.
+
 class EnterPage extends StatefulWidget {
   static String rote = 'EnterPage';
   const EnterPage({Key? key}) : super(key: key);
@@ -29,7 +29,8 @@ class _EnterPageState extends State<EnterPage> {
       try {
         //String? res = prefs.getString(_controller.text);
         if (prefs.getString(_controller.text)==_controller1.text){
-          Navigator.pushNamed(context, ShowList.rote);
+          authorized=true;
+          Navigator.pushNamed(context, LoadJSON.rote);
         }
         else {
           showFiga(context);
