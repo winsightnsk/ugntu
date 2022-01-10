@@ -1,10 +1,43 @@
+import 'package:berkana/enterpage.dart';
 import 'package:berkana/widget_totalbar.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
 
-class RegPage extends StatelessWidget {
+class RegPage extends StatefulWidget {
   static String rote = 'RegPage';
   const RegPage({Key? key}) : super(key: key);
+  @override
+  State<RegPage> createState() => _RegPageState();
+}
+
+class _RegPageState extends State<RegPage> {
+  late TextEditingController _controller;
+  late TextEditingController _controller1;
+  void _regChel() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (_controller.text.length==10 && _controller1.text!=''){
+      try {
+        int.parse(_controller.text);
+        prefs.setString(_controller.text, _controller1.text);
+        Navigator.pushNamed(context, EnterPage.rote);
+      }
+      catch (e) {
+        showFiga(context);
+      }
+    } else {
+      showFiga(context);
+    }
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    _controller=TextEditingController(text: '');
+    _controller1=TextEditingController(text: '');
+    setState(() {
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +65,12 @@ class RegPage extends StatelessWidget {
                     color: Colors.black12,
                     size: 30.0,
                   ),
-                  Text('Регистрация', style: Theme.of(context).textTheme.headline1),
+                  Text('Регистрация', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.teal)),
                   Expanded(child: Container()),
                 ],
               ),
               const Divider(color: Colors.black),
-              Text('Чтобы зарегистрироваться введите свой номер телефона и почту',
+              Text('Чтобы зарегистрироваться введите свой номер телефона и пароль',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyText1
               ),
@@ -45,13 +78,14 @@ class RegPage extends StatelessWidget {
               Row(
                 children: [
                   Expanded(flex:1, child: Container()),
-                  const Expanded(flex:4,
+                  Expanded(flex:4,
                     child: SizedBox(//width: 224,
                       child: TextField(
+                        controller: _controller,
                         keyboardType: TextInputType.number,
-                        style: TextStyle(fontFamily: 'DroidSerif', fontSize: 20,),
+                        style: const TextStyle(fontFamily: 'DroidSerif', fontSize: 20,),
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           filled: true,
                           fillColor: Color(0xFFeceff1),
                           enabledBorder: borderStyle,
@@ -68,31 +102,25 @@ class RegPage extends StatelessWidget {
               Row(
                 children: [
                   Expanded(flex:1, child: Container()),
-                  const Expanded(flex:4,
+                  Expanded(flex:4,
                     child: SizedBox(width: 224,
                       child: TextField(
-                        style: TextStyle(fontFamily: 'DroidSerif', fontSize: 20,),
+                        controller: _controller1,
+                        obscureText: true,
+                        style: const TextStyle(fontFamily: 'DroidSerif', fontSize: 20,),
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           filled: true,
                           fillColor: Color(0xFFeceff1),
                           enabledBorder: borderStyle,
                           focusedBorder: borderStyle,
-                          labelText: 'E-mail',
+                          labelText: 'Password',
                         ),
                       ),
                     ),
                   ),
                   Expanded(flex:1, child: Container()),
                 ],
-              ),
-              Text('Вам придет четырёхзначный код, который будет вашим паролем',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1
-              ),
-              Text('Изменить пароль можно будет в личном кабинете после регистрации',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1
               ),
               const SizedBox(height: 28,),
               SizedBox(
@@ -106,8 +134,8 @@ class RegPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(36)
                           )
                       ),
-                      onPressed: () {},
-                      child: const Text('Отправить код', style: TextStyle(fontFamily: 'gabriola', fontSize: 26))
+                      onPressed: () => _regChel(),
+                      child: Text('Выполнить', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.white))
                   )
               ),
             ],

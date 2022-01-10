@@ -91,13 +91,10 @@ class EnterPage extends StatelessWidget {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF7998AC),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(36)
-                        )
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(36))
                       ),
                       onPressed: () => Navigator.pushNamed(context, ShowList.rote),
-                      child: const Text('Войти', style: TextStyle(fontFamily: 'gabriola', fontSize: 26))
-                    )
+                      child: Text('Войти', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.white)))
                 ),
                 const SizedBox(height: 30,),
                 InkWell(

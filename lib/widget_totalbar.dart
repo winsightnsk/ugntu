@@ -10,11 +10,11 @@ PreferredSizeWidget? totalBar(BuildContext context) {
             Text('Ощепков Владимир Михайлович', style: Theme
                 .of(context)
                 .textTheme
-                .bodyText2),
+                .bodyText2?.copyWith(color: Colors.teal)),
             Text('ЦП_РКПд-21-01', style: Theme
                 .of(context)
                 .textTheme
-                .bodyText2),
+                .bodyText2?.copyWith(color: Colors.teal)),
           ],
         ),
         Expanded(child: Container(),),

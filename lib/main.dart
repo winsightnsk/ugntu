@@ -43,3 +43,21 @@ void toForgetPage(BuildContext context) => Navigator.pushNamed(context, ForgetPa
 void toShowList(BuildContext context) => Navigator.pushNamed(context, ShowList.rote);
 void toDataManage(BuildContext context) => Navigator.pushNamed(context, DataManage.rote);
 void toNetPage(BuildContext context) => Navigator.pushNamed(context, NetPage.rote);
+
+Future showFiga(BuildContext context, {String t='', String c='ерунда какая-то...', String b='Согласен!'}) {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(t),
+        content: Text(c, style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center,),
+        actions: <Widget>[
+          InkWell(
+            child: Text(b, style: Theme.of(context).textTheme.headline1),
+            onTap:  () => Navigator.of(context).pop(),
+          ),
+        ],
+      );
+    },
+  );
+}
