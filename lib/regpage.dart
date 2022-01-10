@@ -35,8 +35,6 @@ class _RegPageState extends State<RegPage> {
     super.initState();
     _controller=TextEditingController(text: '');
     _controller1=TextEditingController(text: '');
-    setState(() {
-    });
   }
 
   @override

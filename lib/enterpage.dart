@@ -4,11 +4,44 @@ import 'package:berkana/regpage.dart';
 import 'package:berkana/showlist.dart';
 import 'package:berkana/widget_totalbar.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
 //Ощепков В.М.
-class EnterPage extends StatelessWidget {
+class EnterPage extends StatefulWidget {
   static String rote = 'EnterPage';
   const EnterPage({Key? key}) : super(key: key);
+  @override
+  State<EnterPage> createState() => _EnterPageState();
+}
+
+class _EnterPageState extends State<EnterPage> {
+  late TextEditingController _controller;
+  late TextEditingController _controller1;
+  @override
+  void initState(){
+    super.initState();
+    _controller=TextEditingController(text: '');
+    _controller1=TextEditingController(text: '');
+  }
+  void _checkChel() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (_controller.text.length==10 && _controller1.text!=''){
+      try {
+        //String? res = prefs.getString(_controller.text);
+        if (prefs.getString(_controller.text)==_controller1.text){
+          Navigator.pushNamed(context, ShowList.rote);
+        }
+        else {
+          showFiga(context);
+        }
+      }
+      catch (e) {
+        showFiga(context);
+      }
+    } else {
+      showFiga(context);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,13 +74,14 @@ class EnterPage extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(flex:1, child: Container()),
-                    const Expanded(flex:4,
+                    Expanded(flex:4,
                       child: SizedBox(//width: 224,
                         child: TextField(
+                          controller: _controller,
                           keyboardType: TextInputType.number,
-                          style: TextStyle(fontFamily: 'DroidSerif', fontSize: 20,),
+                          style: const TextStyle(fontFamily: 'DroidSerif', fontSize: 20,),
                           textAlign: TextAlign.center,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             filled: true,
                             fillColor: Color(0xFFeceff1),
                             enabledBorder: borderStyle,
@@ -64,13 +98,14 @@ class EnterPage extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(flex:1, child: Container()),
-                    const Expanded(flex:4,
+                    Expanded(flex:4,
                       child: SizedBox(width: 224,
                         child: TextField(
+                          controller: _controller1,
                           obscureText: true,
-                          style: TextStyle(fontFamily: 'DroidSerif', fontSize: 20,),
+                          style: const TextStyle(fontFamily: 'DroidSerif', fontSize: 20,),
                           textAlign: TextAlign.center,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             filled: true,
                             fillColor: Color(0xFFeceff1),
                             enabledBorder: borderStyle,
@@ -93,7 +128,7 @@ class EnterPage extends StatelessWidget {
                         primary: const Color(0xFF7998AC),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(36))
                       ),
-                      onPressed: () => Navigator.pushNamed(context, ShowList.rote),
+                      onPressed: () => _checkChel(),
                       child: Text('Войти', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.white)))
                 ),
                 const SizedBox(height: 30,),
