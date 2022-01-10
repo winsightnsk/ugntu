@@ -144,7 +144,7 @@ Future showDetales(BuildContext context, User data) {
       return AlertDialog(
         title: Text(chs(s: data.name), style: Theme.of(context).textTheme.headline2, textAlign: TextAlign.right,),
         content:
-            LoadJsonDop(context, data: data),
+        LoadJsonDop(context, data: data),
         actions: <Widget>[
           InkWell(
             child: Text('Увидел', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.blueAccent)),

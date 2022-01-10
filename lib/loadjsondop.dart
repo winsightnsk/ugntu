@@ -49,8 +49,8 @@ class _LoadJsonDopState extends State<LoadJsonDop> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     usersZzzData = snapshot.data!;
-                    return //_zzzListView(context, usersZzzData);
-                      _zzzRow(context, usersZzzData);
+                    return _zzzListView(context, usersZzzData);
+                      //_zzzRow(context, usersZzzData);
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');
                   }
@@ -62,18 +62,19 @@ class _LoadJsonDopState extends State<LoadJsonDop> {
   }
 }
 
-Row _zzzRow(BuildContext context, data){
-  return Row(children: const [Text('d')],);
-}
-
-
-// ListView _zzzListView(BuildContext context, data) {
-//   return ListView.builder(
-//       itemCount: data.length,
-//       itemBuilder: (context, index) {
-//         return _zzzListTile(context, data[index]);
-//       });
+// Row _zzzRow(BuildContext context, List<Zzz> data){
+//   return Row(children: [Text(data.title)],);
 // }
+
+
+ListView _zzzListView(BuildContext context, List<Zzz> data) {
+  return ListView.builder(
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        return //_zzzListTile(context, data[index]);
+        const Text('dd');
+      });
+}
 //
 // ListTile _zzzListTile(BuildContext context, Zzz data,) {
 //   return
