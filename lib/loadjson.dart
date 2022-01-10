@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:berkana/loadjsondop.dart';
 import 'package:berkana/widget_totalbar.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -18,19 +19,19 @@ class _LoadJSONState extends State<LoadJSON> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: totalBar(context),
-      drawer: totalDrawer(context),
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/epfon.jpg'),
-              fit: BoxFit.cover,
-            )
-        ),
-        width: double.infinity,
-        height: double.infinity,
-        child: const ListJSON(),
-      )
+        appBar: totalBar(context),
+        drawer: totalDrawer(context),
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/epfon.jpg'),
+                fit: BoxFit.cover,
+              )
+          ),
+          width: double.infinity,
+          height: double.infinity,
+          child: const ListJSON(),
+        )
     );
   }
 }
@@ -80,48 +81,48 @@ ListTile _userListTile(BuildContext context, User data, IconData icon) {
     title: Text(
       data.name ?? '---',
       style: Theme.of(context).textTheme.bodyText2?.copyWith(
-          fontSize: 33,
-          color: Colors.brown,
-          shadows: <Shadow>[
-            const Shadow(
-              offset: Offset(3.0, 3.0),
-              blurRadius: 10.0,
-              color: Colors.brown,
-            ),
-          ],
+        fontSize: 33,
+        color: Colors.brown,
+        shadows: <Shadow>[
+          const Shadow(
+            offset: Offset(3.0, 3.0),
+            blurRadius: 10.0,
+            color: Colors.brown,
+          ),
+        ],
       ),
     ),
     subtitle: Text(
-        data.email ?? 'Нет записи',
-        style: Theme.of(context).textTheme.bodyText1?.copyWith(
-          color: Colors.teal,
-          shadows: <Shadow>[
-            const Shadow(
-              offset: Offset(3.0, 3.0),
-              blurRadius: 10.0,
-              color: Colors.teal,
-            ),
-          ],
-        ),
+      data.email ?? 'Нет записи',
+      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+        color: Colors.teal,
+        shadows: <Shadow>[
+          const Shadow(
+            offset: Offset(3.0, 3.0),
+            blurRadius: 10.0,
+            color: Colors.teal,
+          ),
+        ],
+      ),
     ),
     leading:
     Container(
-        decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Color.fromRGBO(0, 31, 232, 0.2),
-                blurRadius: 5.0,
-              ),
-            ]
-        ),
-        child: Icon(
-          icon,
-          size: 40,
-          color: Colors.teal[500],
-        ),
+      decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 31, 232, 0.2),
+              blurRadius: 5.0,
+            ),
+          ]
+      ),
+      child: Icon(
+        icon,
+        size: 40,
+        color: Colors.teal[500],
+      ),
     ),
-    onTap: ()=>showDetales(context, data),
+    onTap: ()=> showDetales(context, data),
   );
 }
 
@@ -137,45 +138,13 @@ Future<List<User>> _fetchUsersList() async {
 
 
 Future showDetales(BuildContext context, User data) {
-  TextStyle? ts=Theme.of(context).textTheme.bodyText1;
-  String chs({int? i, String? s}){
-    String res='';
-    if (i!=null){
-      res=i.toString();
-    }
-    if (s!=null){
-      res=s;
-    }
-    return (res=='')? '---' : res;
-  }
   return showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text(chs(s: data.name), style: Theme.of(context).textTheme.headline2, textAlign: TextAlign.right,),
         content:
-          SingleChildScrollView(
-            child: Column(
-            children: [
-              Row(children: [Flexible(child: Text('id: '+chs(i: data.id), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('username: '+chs(s: data.username), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('e-mail: '+chs(s: data.email), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('phone: '+chs(s: data.phone), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('website: '+chs(s: data.website), style: ts, textAlign: TextAlign.left,))],),
-              Text('address', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
-              Row(children: [Flexible(child: Text('city: '+chs(s: data.address?.city), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('suite: '+chs(s: data.address?.suite), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('zipcode: '+chs(s: data.address?.zipcode), style: ts, textAlign: TextAlign.left,))],),
-              Text('geo', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
-              Row(children: [Flexible(child: Text('lat: '+chs(s: data.address?.geo?.lat), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('lng: '+chs(s: data.address?.geo?.lng), style: ts, textAlign: TextAlign.left,))],),
-              Text('company', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
-              Row(children: [Flexible(child: Text('name: '+chs(s: data.company?.name), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('catchPhrase: '+chs(s: data.company?.catchPhrase), style: ts, textAlign: TextAlign.left,))],),
-              Row(children: [Flexible(child: Text('bs: '+chs(s: data.company?.bs), style: ts, textAlign: TextAlign.left,))],),
-            ],
-          ),
-          ),
+            LoadJsonDop(context, data: data),
         actions: <Widget>[
           InkWell(
             child: Text('Увидел', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.blueAccent)),

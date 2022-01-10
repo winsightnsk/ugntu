@@ -2,6 +2,7 @@ import 'package:berkana/netpage.dart';
 import 'package:flutter/material.dart';
 import 'enterpage.dart';
 import 'loadjson.dart';
+import 'loadjsondop.dart';
 import 'regpage.dart';
 import 'class_theme.dart';
 import 'forgetpage.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         DataManage.rote : (context) => DataManage(storage: CounterStorage()),
         NetPage.rote    : (context) => const NetPage(),
         LoadJSON.rote   : (context) => const LoadJSON(),
+        //LoadJsonDop.rote: (context) => const LoadJsonDop(),
       }
     );
   }
@@ -59,6 +61,8 @@ void toLoadJSON(BuildContext context) {
     );
   }
 }
+void toLoadJsonDop(BuildContext context) => Navigator.pushNamed(context, LoadJsonDop.rote);
+
 
 Future showFiga(BuildContext context, {String t='', String c='ерунда какая-то...', String b='Согласен!', String r=''}) {
   return showDialog(

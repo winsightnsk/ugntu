@@ -119,3 +119,39 @@ class Company {
     return data;
   }
 }
+
+class Zzz {
+  int? userId;
+  int? id;
+  String? title;
+  bool? completed;
+
+  Zzz({this.userId, this.id, this.title, this.completed});
+
+  Zzz.fromJson(Map<String, dynamic> json) {
+    userId = json['userId'];
+    id = json['id'];
+    title = json['title'];
+    completed = json['completed'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['userId'] = userId;
+    data['id'] = id;
+    data['title'] = title;
+    data['completed'] = completed;
+    return data;
+  }
+}
+
+String chs({int? i, String? s}){
+  String res='';
+  if (i!=null){
+    res=i.toString();
+  }
+  if (s!=null){
+    res=s;
+  }
+  return (res=='')? '---' : res;
+}
