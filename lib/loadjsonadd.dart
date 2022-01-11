@@ -55,7 +55,7 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
       ),
     ],
   );
-
+  TextAlign t = TextAlign.center;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,26 +80,26 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
                       Row(
                         children: [
                           Text('User name: ', style: s,),
-                          Expanded(child: Text(chs(s: widget.user.username), textAlign: TextAlign.right, style: ss)),
+                          Expanded(child: Text(chs(s: widget.user.username), textAlign: t, style: ss)),
                         ],
                       ),const Divider(),
                       Row(
                         children: [
                           Text('Phone: ', style: s),
-                          Expanded(child: Text(chs(s: widget.user.phone), textAlign: TextAlign.right, style: ss)),
+                          Expanded(child: Text(chs(s: widget.user.phone), textAlign: t, style: ss)),
                         ],
                       ),const Divider(),
                       Row(
                         children: [
                           Text('E-mail: ', style: s),
-                          Expanded(child: Text(chs(s: widget.user.email), textAlign: TextAlign.right, style: ss)),
+                          Expanded(child: Text(chs(s: widget.user.email), textAlign: t, style: ss)),
                         ],
                       ),const Divider(),
                       Row(
                         children: [
                           Text('Address: ', style: s),
                           Expanded(child:
-                            Text(chs(s: widget.user.address?.getAddress()), textAlign: TextAlign.right, style: ss),
+                            Text(chs(s: widget.user.address?.getAddress()), textAlign: t, style: ss),
                           ),
                         ],
                       ),const Divider(),
@@ -107,7 +107,7 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
                         children: [
                           Text('Company: ', style: s),
                           Expanded(child:
-                            Text(chs(s: widget.user.company?.name), textAlign: TextAlign.right, style: ss),
+                            Text(chs(s: widget.user.company?.name), textAlign: t, style: ss),
                           ),
                         ],
                       ),
