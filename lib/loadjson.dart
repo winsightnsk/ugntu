@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'package:berkana/loadjsonadd.dart';
-import 'package:berkana/loadjsondop.dart';
 import 'package:berkana/widget_totalbar.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 import 'class_users.dart';
-
-const String urlGetUsersList = "https://jsonplaceholder.typicode.com/users";
+import 'cnstnts.dart';
 
 class LoadJSON extends StatefulWidget {
   static String rote = 'LoadJSON';
@@ -137,23 +135,3 @@ Future<List<User>> _fetchUsersList() async {
     throw Exception('Failed to load users from API');
   }
 }
-
-
-// Future showDetales(BuildContext context, User data) {
-//   return showDialog(
-//     context: context,
-//     builder: (BuildContext context) {
-//       return AlertDialog(
-//         title: Text(chs(s: data.name), style: Theme.of(context).textTheme.headline2, textAlign: TextAlign.right,),
-//         content:
-//         LoadJsonDop(context, data: data),
-//         actions: <Widget>[
-//           InkWell(
-//             child: Text('Увидел', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.blueAccent)),
-//             onTap: () => Navigator.of(context).pop(),
-//           ),
-//         ],
-//       );
-//     },
-//   );
-// }

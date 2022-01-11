@@ -2,7 +2,7 @@ import 'package:berkana/netpage.dart';
 import 'package:flutter/material.dart';
 import 'enterpage.dart';
 import 'loadjson.dart';
-import 'loadjsondop.dart';
+//import 'loadjsondop.dart';
 import 'regpage.dart';
 import 'class_theme.dart';
 import 'forgetpage.dart';
