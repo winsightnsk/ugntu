@@ -38,7 +38,7 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
       Shadow(
         offset: Offset(3.0, 3.0),
         blurRadius: 10.0,
-        color: Colors.yellow,
+        color: Colors.white,
       ),
     ],
   );
