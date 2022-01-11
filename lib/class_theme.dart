@@ -37,6 +37,5 @@ ThemeData globalTheme() => ThemeData(
         color: Color.fromRGBO(0, 0, 0, 0.6),
         fontFamily: 'resphekt'
     ),
-    //headline3: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
   ),
 );

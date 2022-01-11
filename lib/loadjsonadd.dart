@@ -30,6 +30,31 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
       );
     }
   }
+  TextStyle s = const TextStyle(
+    fontSize: 25,
+    color: Colors.brown,
+    fontFamily: 'resphekt',
+    shadows: <Shadow>[
+      Shadow(
+        offset: Offset(3.0, 3.0),
+        blurRadius: 10.0,
+        color: Colors.brown,
+      ),
+    ],
+  );
+
+  TextStyle ss = const TextStyle(
+    fontSize: 26,
+    fontFamily: 'gabriola',
+    color: Colors.teal,
+    shadows: <Shadow>[
+      Shadow(
+        offset: Offset(3.0, 3.0),
+        blurRadius: 10.0,
+        color: Colors.teal,
+      ),
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -53,35 +78,35 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
                     children: [
                       Row(
                         children: [
-                          Text('User name: ', ),
-                          Expanded(child: Text(chs(s: widget.user.username), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,),),
+                          Text('User name: ', style: s,),
+                          Expanded(child: Text(chs(s: widget.user.username), textAlign: TextAlign.right, style: ss)),
                         ],
-                      ),
+                      ),const Divider(),
                       Row(
                         children: [
-                          const Text('Phone: '),
-                          Expanded(child: Text(chs(s: widget.user.phone), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,)),
+                          Text('Phone: ', style: s),
+                          Expanded(child: Text(chs(s: widget.user.phone), textAlign: TextAlign.right, style: ss)),
                         ],
-                      ),
+                      ),const Divider(),
                       Row(
                         children: [
-                          const Text('E-mail: '),
-                          Expanded(child: Text(chs(s: widget.user.email), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,),),
+                          Text('E-mail: ', style: s),
+                          Expanded(child: Text(chs(s: widget.user.email), textAlign: TextAlign.right, style: ss)),
                         ],
-                      ),
+                      ),const Divider(),
                       Row(
                         children: [
-                          const Text('Address: '),
+                          Text('Address: ', style: s),
                           Expanded(child:
-                            Text(chs(s: widget.user.address?.getAddress()), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,),
+                            Text(chs(s: widget.user.address?.getAddress()), textAlign: TextAlign.right, style: ss),
                           ),
                         ],
-                      ),
+                      ),const Divider(),
                       Row(
                         children: [
-                          const Text('Company: '),
+                          Text('Company: ', style: s),
                           Expanded(child:
-                            Text(chs(s: widget.user.company?.name), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,),
+                            Text(chs(s: widget.user.company?.name), textAlign: TextAlign.right, style: ss),
                           ),
                         ],
                       ),
