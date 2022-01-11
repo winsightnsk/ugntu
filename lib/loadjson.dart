@@ -122,7 +122,8 @@ ListTile _userListTile(BuildContext context, User data, IconData icon) {
         color: Colors.teal[500],
       ),
     ),
-    onTap: ()=> showDetales(context, data),
+    onTap: //()=> showDetales(context, data),
+    ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => LoadJSONDop(data)))
   );
 }
 

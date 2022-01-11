@@ -112,3 +112,63 @@ Future<List<Zzz>> _fetchZzzList(int id) async {
     throw Exception('Failed to load users from API');
   }
 }
+
+
+class LoadJSONDop extends StatefulWidget {
+  static String rote = 'LoadJsonDop';
+  final User data;
+  const LoadJSONDop(this.data, {Key? key}) : super(key: key);
+
+  @override
+  _LoadJSONDopState createState() => _LoadJSONDopState();
+}
+
+class _LoadJSONDopState extends State<LoadJSONDop> {
+  late Future<List<Zzz>> futureZzzList;
+  late List<Zzz> usersZzzData;
+  @override
+  void initState() {
+    super.initState();
+    futureZzzList = _fetchZzzList(widget.data.id??-1);
+  }
+  @override
+  Widget build(BuildContext context) {
+    return
+      Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(children: [Flexible(child: Text('id: '+chs(i: widget.data.id), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('username: '+chs(s: widget.data.username), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('e-mail: '+chs(s: widget.data.email), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('phone: '+chs(s: widget.data.phone), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('website: '+chs(s: widget.data.website), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Text('address', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
+              Row(children: [Flexible(child: Text('city: '+chs(s: widget.data.address?.city), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('suite: '+chs(s: widget.data.address?.suite), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('zipcode: '+chs(s: widget.data.address?.zipcode), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Text('geo', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
+              Row(children: [Flexible(child: Text('lat: '+chs(s: widget.data.address?.geo?.lat), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('lng: '+chs(s: widget.data.address?.geo?.lng), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Text('company', style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.left,),
+              Row(children: [Flexible(child: Text('name: '+chs(s: widget.data.company?.name), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('catchPhrase: '+chs(s: widget.data.company?.catchPhrase), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              Row(children: [Flexible(child: Text('bs: '+chs(s: widget.data.company?.bs), style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left,))],),
+              FutureBuilder<List<Zzz>>(
+                  future: futureZzzList,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      usersZzzData = snapshot.data!;
+                      return _zzzListView(context, usersZzzData);
+                      //_zzzRow(context, usersZzzData);
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    return const CircularProgressIndicator();
+                  })
+            ],
+          ),
+        ),
+      );
+  }
+}
