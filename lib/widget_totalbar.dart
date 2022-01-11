@@ -3,6 +3,9 @@ import 'main.dart';
 
 PreferredSizeWidget? totalBar(BuildContext context) {
   return AppBar(
+      //extendBodyBehindAppBar: true,
+      //backgroundColor: const Color.fromRGBO(1, 1, 1, 0.2),
+      //elevation: 0.0,
     title: Row(
       children: [
         Column(
