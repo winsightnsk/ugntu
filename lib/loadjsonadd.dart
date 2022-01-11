@@ -115,10 +115,11 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
                       const Text("TODOS:"),
                       for (var item in snapshot.data!)
                         Card(
+                          color: Colors.transparent,
                           elevation: 3,
                           child: ListTile(
                             tileColor: const Color.fromRGBO(
-                                217, 255, 231, 1.0),
+                                255, 255, 255, 0.5803921568627451),
                             onTap: () {},
                             title: Text(chs(s: item.title)),
                             trailing:
