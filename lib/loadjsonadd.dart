@@ -38,7 +38,7 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
       Shadow(
         offset: Offset(3.0, 3.0),
         blurRadius: 10.0,
-        color: Colors.brown,
+        color: Colors.yellow,
       ),
     ],
   );
@@ -46,12 +46,12 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
   TextStyle ss = const TextStyle(
     fontSize: 26,
     fontFamily: 'gabriola',
-    color: Colors.teal,
+    color: Colors.brown,
     shadows: <Shadow>[
       Shadow(
-        offset: Offset(3.0, 3.0),
-        blurRadius: 10.0,
-        color: Colors.teal,
+        offset: Offset(2.0, 2.0),
+        blurRadius: 6.0,
+        color: Colors.white,
       ),
     ],
   );
