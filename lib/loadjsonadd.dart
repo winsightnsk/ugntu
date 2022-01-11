@@ -51,32 +51,48 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
                 if (snapshot.hasData) {
                   return ListView(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                        decoration: const BoxDecoration(),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(children: [const Text('User name: '),Text(chs(s: widget.user.username))],) ,
-                                Text(chs(s: widget.user.phone)),
-                                Text(chs(s: widget.user.email)),
-                                Text(chs(s: widget.user.address?.getAddress())),
-                                Text(chs(s: widget.user.company?.name),),
-                              ],
-                            ),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          Text('User name: ', ),
+                          Expanded(child: Text(chs(s: widget.user.username), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,),),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text('Phone: '),
+                          Expanded(child: Text(chs(s: widget.user.phone), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,)),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text('E-mail: '),
+                          Expanded(child: Text(chs(s: widget.user.email), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,),),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text('Address: '),
+                          Expanded(child:
+                            Text(chs(s: widget.user.address?.getAddress()), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text('Company: '),
+                          Expanded(child:
+                            Text(chs(s: widget.user.company?.name), textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyText1,),
+                          ),
+                        ],
                       ),
                       const Divider(),
                       const Text("TODOS:"),
                       for (var item in snapshot.data!)
                         Card(
-                          elevation: 1,
+                          elevation: 3,
                           child: ListTile(
+                            tileColor: const Color.fromRGBO(
+                                217, 255, 231, 1.0),
                             onTap: () {},
                             title: Text(chs(s: item.title)),
                             trailing:
@@ -96,55 +112,5 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
             ),
         )
     );
-
-   /* FutureBuilder(
-        future: fetchTodos(),
-        builder: (BuildContext context, AsyncSnapshot<List<Zzz>> snapshot) {
-          if (snapshot.hasData) {
-            return ListView(
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  decoration: const BoxDecoration(),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(children: [const Text('User name: '),Text(chs(s: widget.user.username))],) ,
-                          Text(chs(s: widget.user.phone)),
-                          Text(chs(s: widget.user.email)),
-                          Text(chs(s: widget.user.address?.getAddress())),
-                          Text(chs(s: widget.user.company?.name),),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const Divider(),
-                const Text("TODOS:"),
-                for (var item in snapshot.data!)
-                  Card(
-                    elevation: 1,
-                    child: ListTile(
-                      onTap: () {},
-                      title: Text(chs(s: item.title)),
-                      trailing:
-                      Checkbox(value: item.completed, onChanged: null),
-                    ),
-                  ),
-              ],
-            );
-          } else if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),*/
   }
 }
