@@ -61,7 +61,7 @@ void toLoadJSON(BuildContext context) {
     );
   }
 }
-void toLoadJsonDop(BuildContext context) => Navigator.pushNamed(context, LoadJsonDop.rote);
+//void toLoadJsonDop(BuildContext context) => Navigator.pushNamed(context, LoadJsonDop.rote);
 
 
 Future showFiga(BuildContext context, {String t='', String c='ерунда какая-то...', String b='Согласен!', String r=''}) {

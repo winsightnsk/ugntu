@@ -138,21 +138,21 @@ Future<List<User>> _fetchUsersList() async {
 }
 
 
-Future showDetales(BuildContext context, User data) {
-  return showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(chs(s: data.name), style: Theme.of(context).textTheme.headline2, textAlign: TextAlign.right,),
-        content:
-        LoadJsonDop(context, data: data),
-        actions: <Widget>[
-          InkWell(
-            child: Text('Увидел', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.blueAccent)),
-            onTap: () => Navigator.of(context).pop(),
-          ),
-        ],
-      );
-    },
-  );
-}
+// Future showDetales(BuildContext context, User data) {
+//   return showDialog(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return AlertDialog(
+//         title: Text(chs(s: data.name), style: Theme.of(context).textTheme.headline2, textAlign: TextAlign.right,),
+//         content:
+//         LoadJsonDop(context, data: data),
+//         actions: <Widget>[
+//           InkWell(
+//             child: Text('Увидел', style: Theme.of(context).textTheme.headline1?.copyWith(color: Colors.blueAccent)),
+//             onTap: () => Navigator.of(context).pop(),
+//           ),
+//         ],
+//       );
+//     },
+//   );
+// }
