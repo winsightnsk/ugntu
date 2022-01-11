@@ -79,7 +79,7 @@ class Address {
   }
 
   getAddress() {
-    return chs(s: street) + chs(s: suite) + chs(s: city) + chs(s: zipcode);
+    return chs(s: street) + ' ' + chs(s: suite) + ' ' + chs(s: city) + ' ' + chs(s: zipcode);
   }
 }
 
