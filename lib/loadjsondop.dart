@@ -63,39 +63,6 @@ const String urlGetZzzList = "https://jsonplaceholder.typicode.com/todos?userId=
 //   }
 // }
 
-// Row _zzzRow(BuildContext context, List<Zzz> data){
-//   return Row(children: [Text(data.title)],);
-// }
-
-
-ListView _zzzListView(BuildContext context, List<Zzz> data) {
-  return ListView.builder(
-      itemCount: data.length,
-      itemBuilder: (context, index) {
-        return _zzzListTile(context, data[index]);
-        //const Text('dd');
-      });
-}
-
-ListTile _zzzListTile(BuildContext context, Zzz data,) {
-  return
-    ListTile(
-    title: Text(
-      data.title ?? '---',
-      style: Theme.of(context).textTheme.bodyText1,
-    ),
-    leading: Checkbox(
-      value: data.completed,
-      onChanged: (v){},
-    )
-  );
-}
-
-
-
-
-
-
 
 Future<List<Zzz>> _fetchZzzList(int id) async {
   final response = await http.get(Uri.parse(urlGetZzzList));
@@ -161,9 +128,8 @@ class _LoadJSONDopState extends State<LoadJSONDop> {
                   future: futureZzzList,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      usersZzzData = snapshot.data!;
+                      usersZzzData = snapshot.data!; //TODO - По всей видимости сюда передаются не те данные!!!!
                       return _zzzListView(context, usersZzzData);
-                      //_zzzRow(context, usersZzzData);
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
                     }
@@ -174,4 +140,27 @@ class _LoadJSONDopState extends State<LoadJSONDop> {
         ),
       );
   }
+}
+
+ListView _zzzListView(BuildContext context, List<Zzz> data) {
+  return ListView.builder(
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        return _zzzListTile(context, data[index]);
+        //const Text('dd');
+      });
+}
+
+ListTile _zzzListTile(BuildContext context, Zzz data,) {
+  return const ListTile(title: Text('dddd'));
+    // ListTile(
+    //     title: Text(
+    //       data.title ?? '---',
+    //       style: Theme.of(context).textTheme.bodyText1,
+    //     ),
+    //     leading: Checkbox(
+    //       value: data.completed,
+    //       onChanged: (v){},
+    //     )
+    // );
 }
