@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:berkana/loadjsonadd.dart';
 import 'package:berkana/loadjsondop.dart';
 import 'package:berkana/widget_totalbar.dart';
 import 'package:http/http.dart' as http;
@@ -44,7 +45,7 @@ class ListJSON extends StatefulWidget {
 
 class _ListJSONState extends State<ListJSON> {
   late Future<List<User>> futureUsersList;
-  late List<User> usersListData;
+  //late List<User> usersListData;
   @override
   void initState() {
     super.initState();
@@ -57,8 +58,8 @@ class _ListJSONState extends State<ListJSON> {
             future: futureUsersList,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                usersListData = snapshot.data!;
-                return _usersListView(context, usersListData);
+                //List<User> usersListData = snapshot.data!;
+                return _usersListView(context, snapshot.data!/*usersListData*/);
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
@@ -68,7 +69,7 @@ class _ListJSONState extends State<ListJSON> {
   }
 }
 
-ListView _usersListView(BuildContext context, data) {
+ListView _usersListView(BuildContext context, List<User>data) {
   return ListView.builder(
       itemCount: data.length,
       itemBuilder: (context, index) {
@@ -123,7 +124,7 @@ ListTile _userListTile(BuildContext context, User data, IconData icon) {
       ),
     ),
     onTap: //()=> showDetales(context, data),
-    ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => LoadJSONDop(data)))
+    ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => LoadJSONadd(data)))
   );
 }
 

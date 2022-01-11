@@ -77,6 +77,10 @@ class Address {
     }
     return data;
   }
+
+  getAddress() {
+    return "${street} ${suite} ${city} ${zipcode}";
+  }
 }
 
 class Geo {

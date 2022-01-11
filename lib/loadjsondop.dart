@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'class_users.dart';
 
-const String urlGetZzzList = "https://jsonplaceholder.typicode.com/todos?userId=1";
+const String urlGetZzzList = "https://jsonplaceholder.typicode.com/todos?userId=";
 
 // class LoadJsonDop extends StatefulWidget {
 //   static String rote = 'LoadJsonDop';
@@ -65,17 +65,10 @@ const String urlGetZzzList = "https://jsonplaceholder.typicode.com/todos?userId=
 
 
 Future<List<Zzz>> _fetchZzzList(int id) async {
-  final response = await http.get(Uri.parse(urlGetZzzList));
+  final response = await http.get(Uri.parse(urlGetZzzList+id.toString()));
   if (response.statusCode == 200) {
     List jsonResponse = json.decode(response.body);
-    List<Zzz> jr = jsonResponse.map((zzz) => Zzz.fromJson(zzz)).toList();
-    List<Zzz> res= [];
-    for (var element in jr) {
-      if (element.userId==id){
-        res.add(element);
-      }
-    }
-    return res;
+    return jsonResponse.map((z) => Zzz.fromJson(z)).toList();
   } else {
     throw Exception('Failed to load users from API');
   }
@@ -93,7 +86,7 @@ class LoadJSONDop extends StatefulWidget {
 
 class _LoadJSONDopState extends State<LoadJSONDop> {
   late Future<List<Zzz>> futureZzzList;
-  late List<Zzz> usersZzzData;
+  //late List<Zzz> usersZzzData;
   @override
   void initState() {
     super.initState();
@@ -128,8 +121,8 @@ class _LoadJSONDopState extends State<LoadJSONDop> {
                   future: futureZzzList,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      usersZzzData = snapshot.data!; //TODO - По всей видимости сюда передаются не те данные!!!!
-                      return _zzzListView(context, usersZzzData);
+                      //usersZzzData = snapshot.data!; //TODO - По всей видимости сюда передаются не те данные!!!!
+                      return _zzzListView(context, snapshot.data!/*usersZzzData*/);
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
                     }
