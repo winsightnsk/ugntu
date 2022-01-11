@@ -75,6 +75,7 @@ class _LoadJSONaddState extends State<LoadJSONadd> {
               builder: (BuildContext context, AsyncSnapshot<List<Zzz>> snapshot) {
                 if (snapshot.hasData) {
                   return ListView(
+                    padding: const EdgeInsets.all(10.0),
                     children: [
                       Row(
                         children: [
